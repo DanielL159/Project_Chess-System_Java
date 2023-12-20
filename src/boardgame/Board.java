@@ -30,7 +30,7 @@ public class Board {
     }
 
     public Piece pieces(Position position) {
-        if (!positionExist(position) {
+        if (!positionExist(position)) {
             throw new BoardExcepition("Position not on the board");
         }
         return pieces[position.getRow()][position.getCollum()];
@@ -53,7 +53,7 @@ public class Board {
     }
 
     public boolean therIsAPiece(Position position) {
-        if (!positionExist(position) {
+        if (!positionExist(position)) {
             throw new BoardExcepition("Position not on the board");
         }
         return pieces(position) != null;
