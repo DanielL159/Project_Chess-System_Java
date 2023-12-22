@@ -24,13 +24,19 @@ public class Position {
         return collum;
     }
 
+    public void setValues(int row, int collum) {
+        this.row = row;
+        this.collum = collum;
+    }
+
+
     public void setCollum(int collum) {
         this.collum = collum;
     }
 
     @Override
     public String toString() {
-        return  row + " , " + collum ;
+        return row + " , " + collum;
     }
 
 }
