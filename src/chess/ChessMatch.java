@@ -16,13 +16,13 @@ public class ChessMatch {
     }
 
     public ChessPiece[][] getPieces() {
-        ChessPiece[][] mt = new ChessPiece[board.getRows()][board.getColumns()];
+        ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for (int i = 0; i < board.getRows(); i++) {
             for (int j = 0; j < board.getColumns(); j++) {
-                mt[i][j] = (ChessPiece) board.pieces(i, j);
+                mat[i][j] = (ChessPiece) board.pieces(i, j);
             }
         }
-        return mt;
+        return mat;
     }
 
     public boolean[][] possibleMoves(ChessPosition sourcePosition) {
@@ -31,28 +31,28 @@ public class ChessMatch {
         return board.pieces(position).possibleMoves();
     }
 
-    public ChessPiece performeChessMove(ChessPosition sourcePosition, ChessPosition targetePosition) {
-        Position sorce = sourcePosition.toPosition();
-        Position target = targetePosition.toPosition();
-        validateSourcePosition(sorce);
-        validateTargetPosition(sorce, target);
-        Piece capturedePiece = makeMove(sorce, target);
-        return (ChessPiece) capturedePiece;
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        validateTargetPosition(source, target);
+        Piece capturedPiece = makeMove(source, target);
+        return (ChessPiece) capturedPiece;
     }
 
     private Piece makeMove(Position source, Position target) {
         Piece p = board.removePiece(source);
-        Piece captured = board.removePiece(target);
+        Piece capturedPiece = board.removePiece(target);
         board.placePiece(p, target);
-        return captured;
+        return capturedPiece;
     }
 
     private void validateSourcePosition(Position position) {
         if (!board.therIsAPiece(position)) {
-            throw new ChessExcepition("There is no piece on source position ");
+            throw new ChessExcepition("There is no piece on source position");
         }
         if (!board.pieces(position).isThereAnyPossibleMove()) {
-            throw new ChessExcepition("There isn't possible moves");
+            throw new ChessExcepition("There is no possible moves for the chosen piece");
         }
     }
 

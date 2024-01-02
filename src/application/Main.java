@@ -25,17 +25,18 @@ public class Main {
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UI.clearScreen();
                 UI.printBoard(chessMatch.getPieces(), possibleMoves);
-
                 System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
 
-                ChessPiece capturedePiece = chessMatch.performeChessMove(source, target);
+                ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
             } catch (ChessExcepition e) {
                 System.out.println(e.getMessage());
+                e.printStackTrace();
                 sc.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
+                e.printStackTrace();
                 sc.nextLine();
             }
         }
