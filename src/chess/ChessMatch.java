@@ -155,7 +155,7 @@ public class ChessMatch {
         if (!testCheck(color)) {
             return false;
         }
-        List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece) x).getColor() == opponent(color)).toList();
+        List<Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece) x).getColor() == color).toList();
         for (Piece p : list) {
             boolean[][] mat = p.possibleMoves();
             for (int i = 0; i < board.getRows(); i++) {
@@ -164,9 +164,9 @@ public class ChessMatch {
                         Position source = ((ChessPiece) p).getChessPosition().toPosition();
                         Position target = new Position(i, j);
                         Piece capturedPiece = makeMove(source, target);
-                        boolean testeCheck = testCheck(color);
+                        boolean testCheck = testCheck(color);
                         undoMove(source, target, capturedPiece);
-                        if (!testeCheck) {
+                        if (!testCheck) {
                             return false;
                         }
                     }
